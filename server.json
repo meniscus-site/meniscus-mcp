@@ -1,0 +1,13 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "site.meniscus/meniscus",
+  "title": "Meniscus",
+  "description": "Liquid glass design system for AI agents: specs, recipes and reference renders for every platform.",
+  "version": "3.0.0",
+  "websiteUrl": "https://meniscus.site",
+  "icons": [
+    { "src": "https://meniscus.site/icon-512.png", "mimeType": "image/png", "sizes": ["512x512"] },
+    { "src": "https://meniscus.site/favicon.svg", "mimeType": "image/svg+xml", "sizes": ["any"] }
+  ],
+  "remotes": [{ "type": "streamable-http", "url": "https://meniscus.site/mcp" }]
+}
