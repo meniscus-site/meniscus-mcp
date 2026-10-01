@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Liquid glass tab bar: real refraction in CSS</title>
+<style>
+  /* The page around the snippet: something detailed behind the glass, so it has lines to bend. */
+  html, body { margin: 0; height: 100%; font: 600 16px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; color: #141826; }
+  body { display: grid; place-items: center; background:
+    repeating-linear-gradient(-24deg, #2b6bff 0 26px, transparent 26px 70px, #ff4f7b 70px 96px, transparent 96px 140px,
+      #ffa630 140px 166px, transparent 166px 210px, #1fbf8f 210px 236px, transparent 236px 280px),
+    linear-gradient(135deg, #dce8ff, #f1e6ff 55%, #ffe1cf); }
+  .backdrop-type { position: fixed; inset: 0; display: grid; place-content: center; font-size: 22vw; font-weight: 800;
+    letter-spacing: -0.05em; line-height: 0.85; opacity: 0.9; pointer-events: none; text-align: center; }
+</style>
+</head>
+<body>
+<div class="backdrop-type" aria-hidden="true">liquid<br />glass</div>
+
+<!-- Liquid glass, 340 × 64: radius 32, bezel 22, bevel, displacement 9, blur 4.
+     Made with https://meniscus.site/generator. The map is drawn for this size; for any size see "Any size". -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="liquid-glass" x="0" y="0" width="340" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feImage href="data:image/png;base64,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" x="0" y="0" width="340" height="64" preserveAspectRatio="none" result="map"/>
+      <feDisplacementMap in="SourceGraphic" in2="map" scale="18" xChannelSelector="R" yChannelSelector="G" result="bent"/>
+      <feGaussianBlur in="bent" stdDeviation="4" result="frost"/>
+      <feColorMatrix in="frost" type="saturate" values="1.4"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="glass" style="--radius:32px; --blur-fallback:14px; width:340px; height:64px">
+  <div class="glass__optic"></div>
+  <div class="glass__glow"></div>
+  <div class="glass__rim"></div>
+  <div class="glass__content">Home · Search · Library</div>
+</div>
+
+<style>
+:root {
+  --glass-fill: rgba(255,255,255,.15);
+  --glass-rim-key: rgba(255,255,255,.96);
+  --glass-rim-side: rgba(255,255,255,.24);
+  --glass-rim-counter: rgba(255,255,255,.56);
+  --glass-edge: rgba(0,0,0,.12);
+  --glass-ink: #1d1d1f;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --glass-fill: rgba(18,18,24,.30); --glass-rim-key: rgba(255,255,255,.68); --glass-rim-side: rgba(255,255,255,.14);
+          --glass-rim-counter: rgba(255,255,255,.35); --glass-edge: rgba(0,0,0,.32); --glass-ink: #fff; }
+}
+/* The edge line is a 1 px ring outside the silhouette, drawn with the shadow so it follows the radius. */
+.glass { position: relative; isolation: isolate; border-radius: var(--radius);
+  box-shadow: 0 0 0 1px var(--glass-edge), 0 8px 28px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.08); color: var(--glass-ink);
+  /* the host must paint nothing: a <button>/<input> host otherwise brings the UA face colour
+     (grey rgb(107,107,107) under color-scheme: dark) and the optic refracts that instead of the page */
+  background: transparent; border: 0; -webkit-appearance: none; appearance: none; font: inherit; }
+.glass > * { position: absolute; inset: 0; border-radius: inherit; }
+.glass__optic { background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(var(--blur-fallback, 12px)) saturate(1.5);
+  backdrop-filter: blur(var(--blur-fallback, 12px)) saturate(1.5); }
+.glass__glow { pointer-events: none;
+  box-shadow: inset 2px 3px 8px -4px rgba(255,255,255,.8),
+              inset -2px -3px 8px -4px rgba(255,255,255,.35); }
+/* Offset inset highlights follow the silhouette: the lit band is widest where the edge faces the light,
+   so a wide capsule is lit along its whole top edge (a 135° gradient border would light only its left end). */
+.glass__rim { pointer-events: none;
+  box-shadow: inset 1.5px 1.5px 0 -.5px var(--glass-rim-key),
+              inset -1.5px -1.5px 0 -.5px var(--glass-rim-counter),
+              inset 0 0 0 .5px var(--glass-rim-side); }
+.glass__content { position: relative; inset: auto; }
+@media (prefers-reduced-transparency: reduce) {
+  .glass__optic { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(245,245,247,.92); }
+}
+.glass__content { display: grid; place-items: center; height: 100%; }
+</style>
+
+<script>
+  // Chromium is the only engine that renders an SVG filter inside backdrop-filter; Safari and Firefox keep the frost.
+  if (("userAgentData" in navigator || /\bChrome\/\d+/.test(navigator.userAgent)) && !/Firefox|FxiOS|CriOS|EdgiOS/.test(navigator.userAgent))
+    for (const el of document.querySelectorAll(".glass__optic")) el.style.backdropFilter = "url(#liquid-glass)";
+</script>
+
+</body>
+</html>

@@ -4,8 +4,8 @@
 
 Meniscus is a hosted MCP server that teaches design and coding agents real liquid glass: edges that bend the world
 behind them, not blurred cards. It gives Claude Code, Cursor, VS Code and any MCP client a tested design language with
-numbers, 34 component and 10 effect specs, build recipes for Figma, web, SwiftUI, Flutter and React Native, and
-100+ verified reference renders. Numbers follow the current generation of the look (iOS 27 / macOS 27).
+numbers, 34 component and 10 effect specs, build recipes with code for Figma, web, SwiftUI, Flutter and React Native,
+ten screen templates and 100+ verified reference renders. Numbers follow the current generation of the look (iOS 27 / macOS 27).
 
 **Website:** [meniscus.site](https://meniscus.site) · **Docs:** [meniscus.site/docs](https://meniscus.site/docs) ·
 **Guide:** [What is liquid glass?](https://meniscus.site/liquid-glass) · **Specs:** [components](https://meniscus.site/components),
@@ -68,22 +68,38 @@ Build it in SwiftUI next. Use the meniscus tools and check your screenshot again
 
 | Tool | What it returns |
 |---|---|
-| `create_design_brief` | One call for a concrete screen: direction, tokens, specs of the components it names, build notes and limits for your stack, a checklist and two reference images. |
-| `get_guidelines` | The design language; with a medium (`design-tool`, `web`, `swiftui`, `flutter`, `react-native`) also that medium's recipe. |
+| `create_design_brief` | One call for a concrete screen: direction, tokens, the specs it needs, the build code for your stack, a checklist and two reference images. |
+| `get_guidelines` | The design language; with a medium (`design-tool`, `web`, `swiftui`, `flutter`, `react-native`) also that medium's limits and recipe index. |
+| `get_recipe` | A medium's build recipe with its code, whole or one section at a time. |
 | `get_component_spec` | One of 34 components: material, geometry, optics numbers, anatomy, states, rules, references. |
 | `get_effect_spec` | One of 10 effects or accent materials: refraction, frost, specular, dispersion, iridescence, caustics, morph, tint, liquid metal, border beam. |
+| `get_template` | Ten whole screens (smart home, wallet, AI chat, weather and more) as React source. |
 | `search_references` | Search the reference renders by text and filters (kind, component, effect, platform, theme). |
 | `get_references` | Load reference images by id, cropped to the glass or full frame. |
 | `get_platform_support` | What is implemented and verified on each platform. |
 
-All tools are read-only.
+All tools are read-only. Three prompts come with them: `build_screen`, `review_glass` and `add_component`.
 
 ## Plans
 
-**Free:** the design language, every spec, web and design-tool recipes, 1 image per spec, 30 tool calls a day, no card
-needed. **Pro, Team and Lifetime:** every medium (SwiftUI, Flutter, React Native), every image, screen templates, the
-React Native starter and 2,000 calls a day (fair use). Limits reset at 00:00 UTC. Details:
-[meniscus.site/pricing](https://meniscus.site/pricing).
+**Free:** the design language, every spec and every recipe with code (web, Figma, SwiftUI, Flutter, React Native),
+50 tool calls a day, no card. Every new account gets Pro free for its first 14 days. **Pro, Team and Lifetime:** the
+screen templates as React source, the React kit and React Native starter downloads, the whole reference library and
+2,000 calls a day (fair use). Details: [meniscus.site/pricing](https://meniscus.site/pricing).
+
+## Free, no sign-in
+
+- **[Liquid glass CSS generator](https://meniscus.site/generator):** set a shape, drag it over a backdrop, copy the
+  SVG filter, markup and CSS.
+- **Build guides with the full code:** [CSS](https://meniscus.site/liquid-glass/css),
+  [SwiftUI](https://meniscus.site/liquid-glass/swiftui), [Flutter](https://meniscus.site/liquid-glass/flutter),
+  [React Native](https://meniscus.site/liquid-glass/react-native), [Figma](https://meniscus.site/liquid-glass/figma).
+- **[`skills/liquid-glass`](skills/liquid-glass/SKILL.md):** an agent skill with the rules that separate liquid
+  glass from glassmorphism. Claude Code: copy the folder into `~/.claude/skills/` (or your project's
+  `.claude/skills/`); other agents read the same `SKILL.md`.
+- **[`snippets/`](snippets/):** self-contained pages straight from the generator, a
+  [button](snippets/liquid-glass-button.html) and a [tab bar](snippets/liquid-glass-tab-bar.html). Open one in
+  Chrome or Edge to see the bend; Safari and Firefox show the frost fallback.
 
 ## For agents and crawlers
 
@@ -93,7 +109,7 @@ React Native starter and 2,000 calls a day (fair use). Limits reset at 00:00 UTC
 
 ## About this repository
 
-This repository holds the public listing and setup documentation. The server itself is a hosted service at
+This repository holds the public listing, setup documentation, a free agent skill and snippets. The server itself is a hosted service at
 meniscus.site; its source is not published here. Questions, bugs and refunds: [support@meniscus.site](mailto:support@meniscus.site),
 or open an issue.
 
