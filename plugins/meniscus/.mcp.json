@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "meniscus": {
+      "type": "http",
+      "url": "https://meniscus.site/mcp"
+    }
+  }
+}

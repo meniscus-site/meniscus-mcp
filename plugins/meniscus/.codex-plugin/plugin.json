@@ -1,0 +1,51 @@
+{
+  "name": "meniscus",
+  "version": "1.0.0",
+  "description": "Liquid glass your agent gets right: the Meniscus MCP server (specs, tested numbers and code for CSS, SwiftUI, Flutter, React Native and Figma) and the liquid-glass skill.",
+  "author": {
+    "name": "Meniscus",
+    "url": "https://meniscus.site"
+  },
+  "homepage": "https://meniscus.site/docs/codex",
+  "repository": "https://github.com/meniscus-site/meniscus-mcp",
+  "keywords": [
+    "liquid-glass",
+    "glassmorphism",
+    "ios-26",
+    "ios-27",
+    "swiftui",
+    "flutter",
+    "react-native",
+    "css",
+    "figma",
+    "design-system",
+    "ui",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Meniscus",
+    "shortDescription": "Liquid glass your agent gets right",
+    "longDescription": "Meniscus teaches Codex real liquid glass, where the backdrop bends at the edge, instead of blurred glassmorphism: a design language with tested numbers, 34 component and 10 effect specs, and build recipes with code for web, SwiftUI, Flutter, React Native and Figma. The free plan covers every recipe; sign in when Codex first connects.",
+    "developerName": "Meniscus",
+    "category": "Design",
+    "capabilities": [
+      "Read"
+    ],
+    "websiteURL": "https://meniscus.site",
+    "privacyPolicyURL": "https://meniscus.site/privacy",
+    "termsOfServiceURL": "https://meniscus.site/terms",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "brandColor": "#2B6BFF",
+    "defaultPrompt": [
+      "Build a music player screen as one index.html with liquid glass playback controls and a floating glass tab bar",
+      "Add a liquid glass bottom navigation bar to this Flutter app that refracts the photo behind it",
+      "Review the tab bar in this project against the liquid glass rules and fix what reads as glassmorphism"
+    ],
+    "screenshots": [
+      "./assets/proof.png"
+    ]
+  }
+}

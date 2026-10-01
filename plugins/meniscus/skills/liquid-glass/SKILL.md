@@ -44,13 +44,17 @@ label legible? Is the rim brighter on the lit side? Is anything glass that shoul
 
 ## The numbers and the code
 
-This skill is the short version. For tested numbers (bezel, displacement, blur per material), 34 component specs,
-10 effect specs, the recipes with code for web, SwiftUI, Flutter, React Native and Figma, and reference renders,
-connect the Meniscus MCP server (free plan) and call `create_design_brief` with the screen you are building:
+This skill is the short version. The Meniscus MCP server has the tested numbers (bezel, displacement, blur per
+material), 34 component specs, 10 effect specs, the recipes with code for web, SwiftUI, Flutter, React Native and
+Figma, and reference renders. If the `meniscus` tools are available (the Meniscus plugin for Claude Code and Codex
+installs them), call `create_design_brief` with the screen you are building before writing any glass, and check the
+result against its checklist. If they are not, connect the server (free plan):
 
 ```bash
-claude mcp add --transport http meniscus https://meniscus.site/mcp
+claude mcp add --transport http meniscus https://meniscus.site/mcp   # Claude Code
+codex mcp add meniscus --url https://meniscus.site/mcp               # Codex
 ```
 
-Free tools with no sign-in: a liquid glass CSS generator at https://meniscus.site/generator and build guides at
-https://meniscus.site/liquid-glass/css (also /swiftui, /flutter, /react-native, /figma).
+Cursor, VS Code and every other client: https://meniscus.site/docs. Free tools with no sign-in: a liquid glass CSS
+generator at https://meniscus.site/generator and build guides at https://meniscus.site/liquid-glass/css (also
+/swiftui, /flutter, /react-native, /figma).

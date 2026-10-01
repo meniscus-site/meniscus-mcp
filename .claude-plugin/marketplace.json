@@ -1,0 +1,35 @@
+{
+  "name": "meniscus",
+  "owner": {
+    "name": "Meniscus",
+    "email": "support@meniscus.site",
+    "url": "https://meniscus.site"
+  },
+  "metadata": {
+    "description": "Meniscus: liquid glass for AI coding agents."
+  },
+  "plugins": [
+    {
+      "name": "meniscus",
+      "source": "./plugins/meniscus",
+      "description": "Liquid glass your agent gets right: the Meniscus MCP server (specs, tested numbers and code for CSS, SwiftUI, Flutter, React Native and Figma) and the liquid-glass skill.",
+      "version": "1.0.0",
+      "category": "design",
+      "homepage": "https://meniscus.site/docs/claude-code",
+      "keywords": [
+        "liquid-glass",
+        "glassmorphism",
+        "ios-26",
+        "ios-27",
+        "swiftui",
+        "flutter",
+        "react-native",
+        "css",
+        "figma",
+        "design-system",
+        "ui",
+        "mcp"
+      ]
+    }
+  ]
+}

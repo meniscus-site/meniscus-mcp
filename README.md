@@ -1,38 +1,52 @@
-# Meniscus — liquid glass design system for AI agents (MCP)
+# Meniscus — liquid glass MCP server for Claude Code, Cursor and Codex
 
-[![Meniscus: liquid glass your AI gets right](https://meniscus.site/og/home.jpg)](https://meniscus.site)
+[![The same request in Claude Code, without and with Meniscus: milky glassmorphism on the left, clear liquid glass that bends the landscape on the right](plugins/meniscus/assets/proof.png)](https://meniscus.site/#proof)
 
-Meniscus is a hosted MCP server that teaches design and coding agents real liquid glass: edges that bend the world
-behind them, not blurred cards. It gives Claude Code, Cursor, VS Code and any MCP client a tested design language with
-numbers, 34 component and 10 effect specs, build recipes with code for Figma, web, SwiftUI, Flutter and React Native,
-ten screen templates and 100+ verified reference renders. Numbers follow the current generation of the look (iOS 27 / macOS 27).
+Ask a coding agent for "liquid glass" and you get glassmorphism: a blur with a white border. Meniscus is a hosted MCP
+server that teaches Claude Code, Cursor, Codex and any MCP client the real thing, Apple's iOS 26/27 material, where
+the backdrop bends at the edge of every control. Your agent gets a design language with tested numbers, 34 component
+and 10 effect specs, build recipes with code for **CSS and web, SwiftUI, Flutter, React Native and Figma**, ten
+screen templates and 100+ verified reference renders. The free plan covers every recipe.
 
 **Website:** [meniscus.site](https://meniscus.site) · **Docs:** [meniscus.site/docs](https://meniscus.site/docs) ·
 **Guide:** [What is liquid glass?](https://meniscus.site/liquid-glass) · **Specs:** [components](https://meniscus.site/components),
-[effects](https://meniscus.site/effects) · **Pricing:** [meniscus.site/pricing](https://meniscus.site/pricing)
+[effects](https://meniscus.site/effects) · **Free tool:** [CSS generator](https://meniscus.site/generator) ·
+**Pricing:** [meniscus.site/pricing](https://meniscus.site/pricing)
 
-## Server URL
+## Install
+
+The server is remote (Streamable HTTP) at `https://meniscus.site/mcp`. Sign-in is OAuth in the browser: there is no
+API key to paste. It is listed in the official MCP Registry as `site.meniscus/meniscus` ([server.json](server.json)).
+
+### Claude Code: plugin (server + skill)
 
 ```
-https://meniscus.site/mcp
+/plugin marketplace add meniscus-site/meniscus-mcp
+/plugin install meniscus@meniscus
 ```
 
-Remote server, Streamable HTTP. Sign-in is OAuth in the browser: there is no API key to paste. Listed in the official
-MCP Registry as `site.meniscus/meniscus` ([server.json](server.json)).
+Then run `/mcp`, choose meniscus and sign in. The plugin adds the server and the
+[`liquid-glass` skill](plugins/meniscus/skills/liquid-glass/SKILL.md), so Claude reaches for the tools whenever you
+ask for glass. Server only: `claude mcp add --transport http meniscus https://meniscus.site/mcp`.
+More: [meniscus.site/docs/claude-code](https://meniscus.site/docs/claude-code).
 
-## Connect
-
-**Claude Code**
+### Codex: plugin (server + skill)
 
 ```bash
-claude mcp add --transport http meniscus https://meniscus.site/mcp
+codex plugin marketplace add meniscus-site/meniscus-mcp
+codex plugin add meniscus@meniscus
+codex mcp login meniscus
 ```
 
-Then run `/mcp` in Claude Code and choose meniscus to sign in.
+Server only: `codex mcp add meniscus --url https://meniscus.site/mcp`. The CLI, the IDE extension and the ChatGPT
+desktop app share one config. More: [meniscus.site/docs/codex](https://meniscus.site/docs/codex).
 
-**Claude desktop and claude.ai:** Settings → Connectors → Add custom connector, paste the server URL, then Connect.
+### Cursor
 
-**Cursor:** add to `~/.cursor/mcp.json` (or the project's `.cursor/mcp.json`):
+[![Add Meniscus to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=meniscus&config=eyJ1cmwiOiJodHRwczovL21lbmlzY3VzLnNpdGUvbWNwIn0%3D)
+
+Or add to `~/.cursor/mcp.json` (or the project's `.cursor/mcp.json`); Cursor asks you to sign in the first time it
+connects. More: [meniscus.site/docs/cursor](https://meniscus.site/docs/cursor).
 
 ```json
 {
@@ -42,26 +56,37 @@ Then run `/mcp` in Claude Code and choose meniscus to sign in.
 }
 ```
 
-**VS Code:** add to `.vscode/mcp.json`:
+### VS Code, Claude desktop and 30 more clients
 
-```json
-{
-  "servers": {
-    "meniscus": { "type": "http", "url": "https://meniscus.site/mcp" }
-  }
-}
-```
+- **VS Code:** [Add to VS Code](https://vscode.dev/redirect/mcp/install?name=meniscus&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmeniscus.site%2Fmcp%22%7D),
+  or `"meniscus": { "type": "http", "url": "https://meniscus.site/mcp" }` under `servers` in `.vscode/mcp.json`.
+- **Claude desktop and claude.ai:** Customize → Connectors → Add custom connector, paste the server URL, then Connect.
+- **Gemini CLI, Copilot CLI, Windsurf/Devin, Zed, JetBrains, Cline, Kiro, OpenCode, ChatGPT and more:** each client's
+  steps are on [meniscus.site/docs](https://meniscus.site/docs). Any client with remote servers and OAuth works: give
+  it the URL and it finds the sign-in by itself.
 
-Any other client that supports remote servers with OAuth works the same way: give it the URL; it discovers the sign-in
-by itself.
+## Same request, with and without Meniscus
+
+The image above: one request for a weather app with "liquid glass cards and a floating liquid glass tab bar", given
+word for word to Claude Code (Claude Sonnet 5) in fresh sessions. Alone it built milky frost with a uniform white
+border on every card. With Meniscus on the free plan it built clear glass that bends the mountains and lake at every
+edge, with the selected tab as a lens. Nothing edited; two runs per side; both pages run live at
+[meniscus.site/#proof](https://meniscus.site/#proof), and [how they were made](https://meniscus.site/proof/README.md).
 
 ## Ask for a screen
 
 Name the platform and the parts; your agent picks the tools.
 
 ```
-Design a dark macOS notes app with a glass sidebar and toolbar in Figma.
-Build it in SwiftUI next. Use the meniscus tools and check your screenshot against the brief's checklist.
+Build a music player screen as one index.html: album art behind liquid glass playback controls and a floating glass tab bar. Use the meniscus tools.
+```
+
+```
+Add a liquid glass bottom navigation bar to this Flutter app that refracts the photo behind it, not just blurs it. Use the meniscus tools.
+```
+
+```
+Review the tab bar in this project against the liquid glass rules and list what reads as glassmorphism, with fixes.
 ```
 
 ## Tools
@@ -80,6 +105,20 @@ Build it in SwiftUI next. Use the meniscus tools and check your screenshot again
 
 All tools are read-only. Three prompts come with them: `build_screen`, `review_glass` and `add_component`.
 
+## Liquid glass on each platform, in one line
+
+- **CSS and web:** an SVG displacement map applied with `backdrop-filter: url(#filter)` bends the live page in
+  Chromium; Safari and Firefox need a frost fallback; a WebGL shader bends a known backdrop everywhere.
+  [Guide with the code](https://meniscus.site/liquid-glass/css)
+- **SwiftUI (iOS 26+):** `.glassEffect()`, `GlassEffectContainer` for groups that morph, `.buttonStyle(.glass)`.
+  [Guide](https://meniscus.site/liquid-glass/swiftui)
+- **Flutter:** `BackdropFilter` alone is frost; the bend needs a fragment shader through `ImageFilter.shader`
+  (Impeller), fed the body's rect in device pixels. [Guide](https://meniscus.site/liquid-glass/flutter)
+- **React Native and Expo:** only iOS 26 `GlassView` (expo-glass-effect) bends; Android gets blur, older systems an
+  opaque surface. [Guide](https://meniscus.site/liquid-glass/react-native)
+- **Figma:** the native Glass effect, tuned per component (refraction, depth = bezel, frost).
+  [Guide](https://meniscus.site/liquid-glass/figma)
+
 ## Plans
 
 **Free:** the design language, every spec and every recipe with code (web, Figma, SwiftUI, Flutter, React Native),
@@ -91,12 +130,9 @@ screen templates as React source, the React kit and React Native starter downloa
 
 - **[Liquid glass CSS generator](https://meniscus.site/generator):** set a shape, drag it over a backdrop, copy the
   SVG filter, markup and CSS.
-- **Build guides with the full code:** [CSS](https://meniscus.site/liquid-glass/css),
-  [SwiftUI](https://meniscus.site/liquid-glass/swiftui), [Flutter](https://meniscus.site/liquid-glass/flutter),
-  [React Native](https://meniscus.site/liquid-glass/react-native), [Figma](https://meniscus.site/liquid-glass/figma).
-- **[`skills/liquid-glass`](skills/liquid-glass/SKILL.md):** an agent skill with the rules that separate liquid
-  glass from glassmorphism. Claude Code: copy the folder into `~/.claude/skills/` (or your project's
-  `.claude/skills/`); other agents read the same `SKILL.md`.
+- **[`liquid-glass` skill](plugins/meniscus/skills/liquid-glass/SKILL.md):** the rules that separate liquid glass
+  from glassmorphism. The plugins above install it; for any other agent, copy the folder into its skills directory
+  (`~/.claude/skills/` for Claude Code without the plugin).
 - **[`snippets/`](snippets/):** self-contained pages straight from the generator, a
   [button](snippets/liquid-glass-button.html) and a [tab bar](snippets/liquid-glass-tab-bar.html). Open one in
   Chrome or Edge to see the bend; Safari and Firefox show the frost fallback.
@@ -109,9 +145,11 @@ screen templates as React source, the React kit and React Native starter downloa
 
 ## About this repository
 
-This repository holds the public listing, setup documentation, a free agent skill and snippets. The server itself is a hosted service at
-meniscus.site; its source is not published here. Questions, bugs and refunds: [support@meniscus.site](mailto:support@meniscus.site),
-or open an issue.
+This repository holds the public listing, the Meniscus plugin for Claude Code and Codex
+([`plugins/meniscus`](plugins/meniscus), marketplaces in [`.claude-plugin`](.claude-plugin) and
+[`.agents/plugins`](.agents/plugins)), the free skill and snippets. The server itself is a hosted service at
+meniscus.site; its source is not published here. Questions, bugs and refunds:
+[support@meniscus.site](mailto:support@meniscus.site), or open an issue.
 
 ---
 
