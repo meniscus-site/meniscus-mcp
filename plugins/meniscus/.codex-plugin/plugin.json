@@ -47,5 +47,6 @@
     "screenshots": [
       "./assets/proof.png"
     ]
-  }
+  },
+  "license": "MIT"
 }

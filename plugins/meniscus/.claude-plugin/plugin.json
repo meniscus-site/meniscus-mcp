@@ -22,5 +22,6 @@
     "design-system",
     "ui",
     "mcp"
-  ]
+  ],
+  "license": "MIT"
 }

@@ -151,6 +151,11 @@ This repository holds the public listing, the Meniscus plugin for Claude Code an
 meniscus.site; its source is not published here. Questions, bugs and refunds:
 [support@meniscus.site](mailto:support@meniscus.site), or open an issue.
 
+## License
+
+The contents of this repository (the plugin manifests, the skill and the snippets) are under the [MIT License](LICENSE).
+The hosted server and what it returns are covered by the [terms of service](https://meniscus.site/terms).
+
 ---
 
 Meniscus is an independent product and is not affiliated with, endorsed by or sponsored by Apple Inc. Apple, iPadOS,
